@@ -83,8 +83,8 @@ function userExistsCallback(id, exists, snapshot) {
 // Tests to see if /<id> has any data and if it exists.
 function checkIfUserExists(id) {
     usersRef.child(id).on('value', function (snapshot) {
-        var exists = (snapshot.child(id).exists());
-        //var exists = (snapshot.val() !== null);
+        //var exists = (snapshot.child(id).exists());
+        var exists = (snapshot.val() !== null);
         userExistsCallback(id, exists, snapshot);
     });
 }
@@ -116,7 +116,7 @@ var server = app.listen(3000, function () {
 });
 
 app.post('/login', function (req, res) {
-    res.send(docCall(home));
+    res.send(docCall("home"));
 });
 
 // *** --- ***
