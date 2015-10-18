@@ -15,7 +15,8 @@ function userExistsCallback(id, exists, snapshot) {
     if (exists) {
         return snapshot.child(id);
     } else {
-        return null;
+        fireRef.push(id);
+        return snapshot.child(id);
     }
 }
 
