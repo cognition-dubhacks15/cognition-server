@@ -75,8 +75,9 @@ function userExistsCallback(id, exists, snapshot) {
     if (exists) {
         return snapshot.child(id);
     } else {
-        fireRef.push(id);
-        return snapshot.child(id);
+        //fireRef.push(id);
+        //return snapshot.child(id);
+        return null;
     }
 }
 
@@ -94,8 +95,17 @@ function checkIfUserExists(id) {
 
 function addDocument(parent, docData) {
     // Points path the location.
-    var path = fireRef(parent);
-    path.set(docData);
+    if(checkIfUserExists(parent)) {
+        var path = fireRef(parent);
+        path.set(docData);
+    } else {
+        fireRef.set({
+            parent: {
+                document: docData
+            }
+        });
+
+    }
 }
 
 // --- * ---
@@ -116,8 +126,12 @@ var server = app.listen(3000, function () {
 });
 
 app.post('/login', function (req, res) {
-    res.send(docCall("home"));
+    res.send(addDocument("home", "599203"));
+    console.log(req.child("math"));
 });
+
+//var logRef = fireRef.push();
+    //console.log(fireRef.push().child("math"));
 
 // *** --- ***
 module.exports = app;
