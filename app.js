@@ -57,4 +57,28 @@ app.use(function(err, req, res, next) {
 });
 
 
+
+/*//
+function User(key){
+    this.key = key;
+    this.documents = [];
+
+}
+
+// Creates an array for the users, adds functions that modify the array
+var userArray = { []
+// Adds a value to the array of "key" and pointing to nothing.
+this.addUser = function addUser(key) {
+
+}
+
+};
+}
+
+var file = !!!(input method that grabs file from front-end);
+
+function convertImage(img) {
+
+}*/
+
 module.exports = app;

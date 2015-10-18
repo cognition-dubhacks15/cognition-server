@@ -40,11 +40,9 @@ function ncrHandlerFile(fileName){
 
 }
 // -- * -- Debug -- * --
-console.log("First file:")
+console.log("First file:");
 
 // Prints out the copy of the file.
 ncrHandlerFile("logo3w.png");
-
-console.log("Next file:")
-
-ncrHandlerFile("bise_l40.jpg")
+//console.log("Next file:")
+//ncrHandlerFile("math.png")
