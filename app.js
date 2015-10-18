@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var Firebase = require("firebase");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -56,29 +57,59 @@ app.use(function(err, req, res, next) {
     });
 });
 
+// --- * ---
+
+// Main Reference for Firebase Server
+var fireRef = new Firebase("https://cognition-client.firebaseio.com/");
 
 
-/*//
-function User(key){
-    this.key = key;
-    this.documents = [];
-
+// Pulled from anantn detect_data
+// https://gist.github.com/anantn/4323949
+function docCall(id) {
+    checkIfUserExists(id);
 }
 
-// Creates an array for the users, adds functions that modify the array
-var userArray = { []
-// Adds a value to the array of "key" and pointing to nothing.
-this.addUser = function addUser(key) {
-
+function userExistsCallback(id, exists, snapshot) {
+    if (exists) {
+        return snapshot.child(id);
+    } else {
+        fireRef.push(id);
+        return snapshot.child(id);
+    }
 }
 
-};
+// Tests to see if /<id> has any data and if it exists.
+function checkIfUserExists(id) {
+    usersRef.child(id).on('value', function (snapshot) {
+        var exists = (snapshot.child(id).exists());
+        //var exists = (snapshot.val() !== null);
+        userExistsCallback(id, exists, snapshot);
+    });
 }
 
-var file = !!!(input method that grabs file from front-end);
+// Pushes a child to the parent
+// REQUIRES: Parent to exist (Handled by the pull request, which ALWAYS runs first.)
 
-function convertImage(img) {
+function addDocument(parent, docData) {
+    // Points path the location.
+    var path = fireRef(parent);
+    path.set(docData);
+}
 
-}*/
+// --- * ---
 
+// *** --- ***
+
+app.get('/', function (req, res) {
+    res.send('Hello World!');
+});
+
+var server = app.listen(3000, function () {
+    var host = server.address().address;
+    var port = server.address().port;
+
+    console.log('Example app listening at http://%s:%s', host, port);
+});
+
+// *** --- ***
 module.exports = app;

@@ -1,4 +1,4 @@
-<script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+var Firebase = require("firebase");
 
 // Main Reference for Firebase Server
 var fireRef = new FireBase("https://cognition-client.firebaseio.com/");

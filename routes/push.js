@@ -1,7 +1,7 @@
-<script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+var Firebase = require("firebase");
 
 // Main Reference for Firebase Server
-var fireRef = new FireBase("https://cognition-client.firebaseio.com/");
+var fireRef = new Firebase("https://cognition-client.firebaseio.com/");
 
 // Pushes a child to the parent
 // REQUIRES: Parent to exist (Handled by the pull request, which ALWAYS runs first.)
