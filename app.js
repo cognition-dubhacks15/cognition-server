@@ -8,6 +8,7 @@ var Firebase = require("firebase");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var login = require('./routes/login');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -100,6 +102,8 @@ function addDocument(parent, docData) {
 
 // *** --- ***
 
+
+
 app.get('/', function (req, res) {
     res.send('Hello World!');
 });
@@ -111,5 +115,11 @@ var server = app.listen(3000, function () {
     console.log('Example app listening at http://%s:%s', host, port);
 });
 
+app.post('/login', function (req, res) {
+    res.send(docCall(home));
+});
+
 // *** --- ***
 module.exports = app;
+
+
