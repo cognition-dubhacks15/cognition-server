@@ -126,8 +126,8 @@ var server = app.listen(3000, function () {
 });
 
 app.post('/login', function (req, res) {
-    res.send(addDocument("home", "599203"));
-    console.log(req.child("math"));
+    //res.send(addDocument("home", "599203"));
+    //console.log(req.child("math"));
 });
 
 //var logRef = fireRef.push();
